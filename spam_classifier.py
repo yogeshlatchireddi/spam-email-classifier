@@ -31,10 +31,10 @@ def load_data(filepath="mail_data.csv"):
 def preprocess(data):
     data = data.copy()
 
-    # Replace null values with empty string
+    # Replace null values
     data = data.where(pd.notnull(data), '')
 
-    # Encode labels (spam = 0, ham = 1)
+    # Encode labels
     data['Category'] = data['Category'].map({'spam': 0, 'ham': 1})
 
     X = data['Message']
@@ -111,3 +111,4 @@ if __name__ == "__main__":
     # Example message
     sample_message = "Congratulations! You have won a free lottery ticket."
     predict_message(sample_message, model, vectorizer)
+
